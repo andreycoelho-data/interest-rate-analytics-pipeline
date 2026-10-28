@@ -56,3 +56,5 @@ graph LR
     D -->|4. SP Refresh & Visão de Produção| E[(MySQL Produção)]
     E -->|5. Star Schema & DAX Ponderado| F[Power BI Dashboards]
 ```
+
+ola bonitão
