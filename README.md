@@ -46,18 +46,12 @@ No entanto, o volume massivo de operações originadas por dezenas de parceiros 
 
 ## 🛠️ Resolução de Dores e Solução Técnica
 
-O projeto foi estruturado através de uma esteira analítica integrada *end-to-end* em 4 camadas técnicas:
+O projeto foi estruturado através de uma esteira analítica integrada *end-to-end* onde o Power Query processa inicialmente a tabela do indexador, servindo de base para o motor de cálculos em Python e armazenamento relacional:
 
 ```mermaid
 graph LR
-    A[Dados Brutos & Selic] -->|1. Ingestão & Regras por Porte| B[Python / Pandas]
-    B -->|2. Carga Staging & Governança| C[(MySQL Staging)]
-    C -->|3. SP Refresh & Visão de Produção| D[(MySQL Produção)]
-    D -->|4. Selic Híbrida 252DU| E[Power Query / M]
+    A[Power Query / M] -->|1. Tratamento Selic Híbrida 252DU| B[Python / Pandas]
+    C[Dados Brutos de Operações] -->|2. Ingestão & Regras por Porte| B
+    B -->|3. Carga Staging & Governança| D[(MySQL Staging)]
+    D -->|4. SP Refresh & Visão de Produção| E[(MySQL Produção)]
     E -->|5. Star Schema & DAX Ponderado| F[Power BI Dashboards]
-
-Camada Relacional e Governança (SQL): Isola o ambiente de staging (painel_tx) do schema de produção (produtofinal) e automatiza a recriação de visões via Stored Procedure.
-
-Séries Temporais Híbridas (Power Query / Linguagem M): Algoritmo na tabela FATO_SELIC que combina o histórico real disponível com a projeção de mercado para o período restante, ajustando a curva para a convenção bancária de 252 dias úteis.
-
-Camada de Métricas Ponderadas (Power BI / DAX): Construção do modelo relacional em estrela e criação de medidas DAX para o cálculo dinâmico da Taxa Média Ponderada pelo Valor da Operação.
