@@ -1,4 +1,3 @@
-```markdown
 🌐 **Language / Idioma:** [English](README_EN.md) | [Português](README.md)
 
 ---
