@@ -65,8 +65,6 @@ Séries Temporais Híbridas (Power Query / Linguagem M): Algoritmo na tabela FAT
 
 Camada de Métricas Ponderadas (Power BI / DAX): Construção do modelo relacional em estrela e criação de medidas DAX para o cálculo dinâmico da Taxa Média Ponderada pelo Valor da Operação.
 
-⬆ Voltar ao Sumário
-
 📂 Estrutura do Repositório e Códigos
 Acesse os códigos e scripts de cada etapa do pipeline nas suas respectivas pastas:
 
@@ -92,8 +90,6 @@ Acesse os códigos e scripts de cada etapa do pipeline nas suas respectivas past
 ├── README.md                      # Documentação executiva em Português
 └── README_EN.md                   # Executive documentation in English
 
-⬆ Voltar ao Sumário
-
 💎 Geração de Valor para a Instituição e Gerência
 - Padronização e Confiabilidade: Eliminação do risco de erro humano no tratamento manual de arquivos dos bancos parceiros, garantindo 100% de rastreabilidade do dado.
 - Visão Real do Custo de Crédito: Com a anualização e a Selic híbrida de 252 dias úteis, a gerência enxerga a taxa efetiva real praticada na ponta, sem distorções operacionais.
@@ -108,5 +104,3 @@ A implementação deste pipeline transformou dados brutos e despadronizados em i
 2. Ajuste de Políticas de Garantia: Direcionar recursos do fundo para linhas de crédito, portes empresariais e regiões geográficas que apresentam taxas mais equilibradas.
 
 3. Acompanhamento de Tendências: Monitorar o impacto direto da oscilação da taxa Selic sobre a carteira garantida através do modelo preditivo híbrido.
-
-🌐 Switch to English Version | ⬆ Voltar ao Topo
