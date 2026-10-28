@@ -55,3 +55,12 @@ graph LR
     C -->|3. SP Refresh & Visão de Produção| D[(MySQL Produção)]
     D -->|4. Selic Híbrida 252DU| E[Power Query / M]
     E -->|5. Star Schema & DAX Ponderado| F[Power BI Dashboards]
+
+Detalhamento das Camadas Desenvolvidas:
+Motor de Tratamento e Classificação por Porte (Python): Ingestão automatizada que higieniza tipos, corrige escalas e aplica limiares operacionais específicos por porte (MEI, ME e EPP) para classificar e converter as taxas em Taxa Anual Real.
+
+Camada Relacional e Governança (SQL): Isola o ambiente de staging (painel_tx) do schema de produção (produtofinal) e automatiza a recriação de visões via Stored Procedure.
+
+Séries Temporais Híbridas (Power Query / Linguagem M): Algoritmo na tabela FATO_SELIC que combina o histórico real disponível com a projeção de mercado para o período restante, ajustando a curva para a convenção bancária de 252 dias úteis.
+
+Camada de Métricas Ponderadas (Power BI / DAX): Construção do modelo relacional em estrela e criação de medidas DAX para o cálculo dinâmico da Taxa Média Ponderada pelo Valor da Operação.
