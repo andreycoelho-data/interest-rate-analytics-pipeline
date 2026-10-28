@@ -57,4 +57,55 @@ graph LR
     E -->|5. Star Schema & DAX Ponderado| F[Power BI Dashboards]
 ```
 
-ola bonitão
+Detalhamento das Camadas Desenvolvidas:
+Séries Temporais e Indexador (Power Query / Linguagem M): Tratamento inicial na tabela FATO_SELIC, combinando o histórico real disponível com a projeção de mercado ajustada para a convenção bancária de 252 dias úteis.
+
+Motor de Tratamento e Classificação por Porte (Python): O script consome a base tratada da Selic e as operações, higienizando dados, corrigindo escalas e aplicando limiares operacionais por porte (MEI, ME e EPP) para calcular a Taxa Anual Real e o Valor Ponderado.
+
+Camada Relacional e Governança (SQL): Isola o ambiente de staging (painel_tx) do schema de produção (produtofinal) e automatiza a recriação de visões via Stored Procedure.
+
+Camada de Métricas Ponderadas (Power BI / DAX): Construção do modelo relacional em estrela e criação de medidas DAX para o cálculo dinâmico da Taxa Média Ponderada pelo Valor da Operação.
+
+⬆ Voltar ao Sumário
+
+📂 Estrutura do Repositório e Códigos
+Acesse os códigos e scripts de cada etapa do pipeline nas suas respectivas pastas:
+
+📄 Documentação em Inglês: README_EN.md
+
+🐍 Script de Tratamento em Python: python/processamento_taxas.py
+
+🗄️ Stored Procedure e Views SQL: sql/sp_gerar_view_txjuros.sql
+
+⚡ Linguagem M (Selic Híbrida 252DU): power_query/selic_acumulada_12m.m
+
+📊 Medidas Ponderadas em DAX: dax/medidas_taxa_ponderada.sql
+
+├── python/
+│   └── processamento_taxas.py     # Script de ingestão, sanitização e motor de regras
+├── sql/
+│   └── sp_gerar_view_txjuros.sql  # Stored Procedure e Views de produção no MySQL
+├── power_query/
+│   └── selic_acumulada_12m.m     # Script M para cálculo móvel Selic Híbrida (252 DU)
+├── dax/
+│   └── medidas_taxa_ponderada.sql # Medidas DAX de taxa média ponderada e volume
+├── README.md                      # Documentação executiva em Português
+└── README_EN.md                   # Executive documentation in English
+
+⬆ Voltar ao Sumário
+
+💎 Geração de Valor para a Instituição e Gerência
+- Padronização e Confiabilidade: Eliminação do risco de erro humano no tratamento manual de arquivos dos bancos parceiros, garantindo 100% de rastreabilidade do dado.
+- Visão Real do Custo de Crédito: Com a anualização e a Selic híbrida de 252 dias úteis, a gerência enxerga a taxa efetiva real praticada na ponta, sem distorções operacionais.
+- Métricas Financeiras Ponderadas: A substituição da média simples pela Média Ponderada assegura que a análise de risco reflita com precisão o volume financeiro exposto pelo fundo.
+- Eficiência Operacional: Redução do tempo de preparação do painel analítico através da automação do fluxo de dados (Power Query $\to$ Python $\to$ SQL $\to$ Power BI).
+
+⬆ Voltar ao Sumário
+
+🎯 Conclusão e Tomada de Decisão
+A implementação deste pipeline transformou dados brutos e despadronizados em inteligência analítica estratégica. Com esta estrutura, a gestão possui subsídios técnicos para:
+1. Negociação com Bancos Parceiros: Identificar instituições financeiras com taxas ou spreads acima do teto regulamentar e fundamentar renegociações operacionais.
+2. Ajuste de Políticas de Garantia: Direcionar recursos do fundo para linhas de crédito, portes empresariais e regiões geográficas que apresentam taxas mais equilibradas.
+3. Acompanhamento de Tendências: Monitorar o impacto direto da oscilação da taxa Selic sobre a carteira garantida através do modelo preditivo híbrido.
+
+🌐 Switch to English Version | ⬆ Voltar ao Topo
