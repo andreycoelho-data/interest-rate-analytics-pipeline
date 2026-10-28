@@ -92,13 +92,13 @@ Acesse os códigos e scripts de cada etapa do pipeline nas suas respectivas past
 ├── README.md                      # Documentação executiva em Português
 └── README_EN.md                   # Executive documentation in English
 
+⬆ Voltar ao Sumário
+
 💎 Geração de Valor para a Instituição e Gerência
 - Padronização e Confiabilidade: Eliminação do risco de erro humano no tratamento manual de arquivos dos bancos parceiros, garantindo 100% de rastreabilidade do dado.
 - Visão Real do Custo de Crédito: Com a anualização e a Selic híbrida de 252 dias úteis, a gerência enxerga a taxa efetiva real praticada na ponta, sem distorções operacionais.
 - Métricas Financeiras Ponderadas: A substituição da média simples pela Média Ponderada assegura que a análise de risco reflita com precisão o volume financeiro exposto pelo fundo.
 - Eficiência Operacional: Redução do tempo de preparação do painel analítico através da automação do fluxo de dados (Python $\rightarrow$ SQL $\rightarrow$ Power BI).
-
-⬆ Voltar ao Sumário
 
 🎯 Conclusão e Tomada de Decisão
 A implementação deste pipeline transformou dados brutos e despadronizados em inteligência analítica estratégica. Com esta estrutura, a gestão possui subsídios técnicos para:
